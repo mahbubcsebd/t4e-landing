@@ -2,12 +2,14 @@ import Link from 'next/link';
 
 export default function Footer() {
   const links = [
-    { name: '6-Layer Concept', href: '/#layers' },
+    { name: 'Why', href: '/#problem' },
+    { name: 'Concept', href: '/#layers' },
+    { name: 'Agents', href: '/#agents' },
+    { name: 'Reverse', href: '/#reverse' },
+    { name: 'Templates', href: '/#portability' },
     { name: 'Enterprise', href: '/#enterprise' },
     { name: 'Pricing', href: '/#pricing' },
     { name: 'FAQ', href: '/#faq' },
-    { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Terms & Conditions', href: '/terms-and-conditions' },
   ];
 
   return (
