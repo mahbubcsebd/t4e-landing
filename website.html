@@ -1,0 +1,2380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>think4ever — The Product Knowledge Layer for the AI Agent Era</title>
+    <meta
+      name="description"
+      content="think4ever turns your product into a permanent, machine-readable 6-Layer Concept that any AI agent — Claude Code, Cursor, Codex, or think4ever's own agent workforce — can build, test, deploy, and keep in sync with reality."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+      :root {
+        --primary: #0ea5e9;
+        --primary-dark: #0284c7;
+        --accent: #7dd3fc;
+        --surface: #f0f9ff;
+        --muted: #e0f2fe;
+        --border: #bae6fd;
+        --text: #0c4a6e;
+        --text2: #0369a1;
+        --navy: #0c1f33;
+        --navy2: #12304d;
+        --navy3: #1e4a73;
+        --success: #22c55e;
+        --warning: #f59e0b;
+        --error: #ef4444;
+        --ink: #0f172a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+        background: #fff;
+        color: var(--text);
+        line-height: 1.6;
+        font-size: 15px;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      /* NAV */
+      nav.top {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 100;
+        background: transparent;
+        border-bottom: none;
+      }
+      nav.top .wrap {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        height: 80px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--navy);
+        font-weight: 900;
+        font-size: 19px;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .logo .mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        background: var(--primary);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 15px;
+      }
+      .navlinks {
+        display: flex;
+        gap: 4px;
+        margin-left: auto;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      .navlinks a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 13.5px;
+        font-weight: 700;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .navlinks a:hover {
+        color: var(--primary-dark);
+        background: var(--surface);
+      }
+      .nav-cta {
+        background: var(--primary);
+        color: #fff !important;
+        border-radius: 9px;
+      }
+      .nav-cta:hover {
+        background: var(--primary-dark) !important;
+      }
+
+      /* HERO */
+      .hero {
+        background: radial-gradient(125% 125% at 50% 10%, #fff 40%, var(--border) 100%);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: stretch;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+      .hero .wrap {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding-top: 18vh;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--primary-dark);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border-radius: 999px;
+        padding: 8px 16px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 54px;
+        line-height: 1.07;
+        letter-spacing: -0.035em;
+        font-weight: 900;
+        margin: 0 0 22px;
+        color: var(--navy);
+      }
+      h1 .hl {
+        color: var(--primary);
+      }
+      .hero .lead {
+        font-size: 19px;
+        color: var(--text2);
+        max-width: 820px;
+        margin: 0 auto 48px;
+      }
+      .hero .lead b {
+        color: var(--navy);
+      }
+      .btn-row {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        height: 52px;
+        padding: 0 28px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--primary-dark);
+        border: 1.5px solid var(--border);
+      }
+      .btn-ghost:hover {
+        background: var(--surface);
+        border-color: var(--primary);
+      }
+      .statbar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1px;
+        background: var(--navy3);
+        border: 1px solid var(--navy3);
+        border-radius: 18px;
+        overflow: hidden;
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .statbar .s {
+        background: var(--navy2);
+        padding: 22px 14px;
+        text-align: center;
+      }
+      .statbar .v {
+        font-size: 28px;
+        font-weight: 900;
+        color: #38bdf8;
+        letter-spacing: -0.03em;
+      }
+      .statbar .l {
+        font-size: 11.5px;
+        color: #93c5fd;
+        font-weight: 600;
+        margin-top: 3px;
+      }
+
+      /* WORKS WITH */
+      .workswith {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 22px 0;
+      }
+      .workswith .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px 34px;
+        flex-wrap: wrap;
+      }
+      .workswith span {
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--text2);
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        white-space: nowrap;
+      }
+      .workswith span i {
+        color: var(--primary);
+        font-size: 16px;
+      }
+      .workswith .lbl {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text2);
+        font-weight: 800;
+        opacity: 0.7;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 72px 0;
+      }
+      section.alt {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      section.dark {
+        background: var(--navy);
+        color: #dbeafe;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .dark .kicker {
+        color: #7dd3fc;
+      }
+      h2 {
+        font-size: 34px;
+        letter-spacing: -0.025em;
+        font-weight: 900;
+        margin: 0 0 12px;
+        color: var(--ink);
+      }
+      .dark h2 {
+        color: #fff;
+      }
+      .sub {
+        color: var(--text2);
+        font-size: 16px;
+        margin: 0 0 40px;
+        max-width: 840px;
+      }
+      .dark .sub {
+        color: #93c5fd;
+      }
+      .center {
+        text-align: center;
+      }
+      .center .sub {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* CARDS */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 26px;
+        box-shadow: 0 1px 2px rgba(12, 74, 110, 0.06);
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 8px 24px rgba(12, 74, 110, 0.1);
+      }
+      .card .icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        background: var(--muted);
+        color: var(--primary);
+        display: grid;
+        place-items: center;
+        font-size: 19px;
+        margin-bottom: 16px;
+      }
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 16.5px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .card p {
+        margin: 0;
+        font-size: 13.5px;
+        color: var(--text2);
+      }
+      .card p b {
+        color: var(--text);
+      }
+      .card.pain {
+        border-left: 4px solid var(--error);
+      }
+      .card.pain .icon {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--error);
+      }
+
+      /* 6 LAYERS */
+      .layers {
+        max-width: 760px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .layer {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        padding: 18px 24px;
+        transition:
+          transform 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .layer:hover {
+        transform: translateX(6px);
+        border-color: var(--primary);
+      }
+      .layer .n {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--primary);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 15px;
+        flex: 0 0 auto;
+      }
+      .layer h4 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .layer p {
+        margin: 2px 0 0;
+        font-size: 12.5px;
+        color: var(--text2);
+      }
+      .layer .fmt {
+        margin-left: auto;
+        font-size: 10.5px;
+        font-weight: 800;
+        color: var(--text2);
+        background: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 4px 10px;
+        white-space: nowrap;
+      }
+
+      /* TWO MOTIONS */
+      .motions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 24px;
+      }
+      .motion {
+        border-radius: 18px;
+        padding: 34px;
+        border: 1px solid var(--navy3);
+        background: var(--navy2);
+      }
+      .motion h3 {
+        margin: 0 0 6px;
+        font-size: 21px;
+        font-weight: 900;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .motion h3 i {
+        color: #38bdf8;
+      }
+      .motion .tag {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: #7dd3fc;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .motion p {
+        font-size: 14px;
+        color: #93c5fd;
+        margin: 0 0 18px;
+      }
+      .motion ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .motion li {
+        font-size: 13px;
+        color: #bfdbfe;
+        padding: 8px 0;
+        border-top: 1px solid var(--navy3);
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .motion li i {
+        color: #22c55e;
+        margin-top: 3px;
+        flex: 0 0 auto;
+      }
+
+      /* AGENT GRID */
+      .agents {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+        gap: 14px;
+      }
+      .agent {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .agent:hover {
+        border-color: var(--primary);
+        box-shadow: 0 6px 18px rgba(12, 74, 110, 0.1);
+      }
+      .agent .ai {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--muted);
+        color: var(--primary);
+        display: grid;
+        place-items: center;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .agent h4 {
+        margin: 0 0 5px;
+        font-size: 13.5px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .agent p {
+        margin: 0;
+        font-size: 11.8px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+
+      /* PIPELINE */
+      .pipeline {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        overflow-x: auto;
+        padding: 6px 0;
+      }
+      .pstep {
+        flex: 1;
+        min-width: 150px;
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 18px 14px;
+        text-align: center;
+        position: relative;
+      }
+      .pstep:first-child {
+        border-radius: 13px 0 0 13px;
+      }
+      .pstep:last-child {
+        border-radius: 0 13px 13px 0;
+      }
+      .pstep + .pstep {
+        border-left: 0;
+      }
+      .pstep i {
+        font-size: 19px;
+        color: var(--primary);
+        margin-bottom: 8px;
+        display: block;
+      }
+      .pstep h5 {
+        margin: 0 0 4px;
+        font-size: 12.5px;
+        font-weight: 800;
+        color: var(--ink);
+      }
+      .pstep p {
+        margin: 0;
+        font-size: 10.8px;
+        color: var(--text2);
+      }
+      .pstep.fix {
+        background: #fffbeb;
+      }
+      .pstep.fix i {
+        color: var(--warning);
+      }
+
+      /* TABLE */
+      .compare {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .compare th,
+      .compare td {
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        font-size: 13px;
+        vertical-align: top;
+      }
+      .compare th {
+        background: var(--surface);
+        font-size: 11.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text);
+      }
+      .compare tr:last-child td {
+        border-bottom: 0;
+      }
+      .compare td:first-child {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .yes {
+        color: #15803d;
+        font-weight: 800;
+      }
+      .no {
+        color: #b91c1c;
+        font-weight: 800;
+      }
+      .part {
+        color: #b45309;
+        font-weight: 800;
+      }
+
+      /* SVG PANEL */
+      .svg-panel {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 26px;
+        overflow-x: auto;
+        box-shadow: 0 1px 2px rgba(12, 74, 110, 0.06);
+      }
+      .svg-panel svg {
+        display: block;
+        margin: 0 auto;
+        min-width: 840px;
+      }
+      .caption {
+        text-align: center;
+        font-size: 13px;
+        color: var(--text2);
+        margin-top: 14px;
+      }
+
+      /* PRICING */
+      .pricing-section {
+        position: relative;
+        overflow: hidden;
+        padding: 90px 0;
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .pricing-section h2 .hl {
+        color: var(--primary-dark);
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        margin-top: 48px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 4px 20px rgba(12, 74, 110, 0.05);
+      }
+      .p-card {
+        padding: 32px 24px;
+        text-align: left;
+        border-right: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+      }
+      .p-card:last-child {
+        border-right: 0;
+      }
+      .p-card .tier {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--primary);
+        margin-bottom: 12px;
+        display: block;
+      }
+      .p-card h3 {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--ink);
+        margin: 0 0 16px;
+      }
+      .p-card .price {
+        font-size: 18px;
+        font-weight: 900;
+        color: var(--ink);
+        margin: 0 0 16px;
+      }
+      .p-card .desc {
+        font-size: 13px;
+        color: var(--text2);
+        margin: 0 0 24px;
+        line-height: 1.5;
+        min-height: 60px;
+      }
+      .p-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px;
+        flex-grow: 1;
+      }
+      .p-card li {
+        font-size: 12.5px;
+        color: var(--text2);
+        padding: 8px 0;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        line-height: 1.4;
+      }
+      .p-card li i {
+        color: var(--primary);
+        margin-top: 3px;
+        font-size: 13px;
+      }
+      .btn-pricing {
+        display: block;
+        text-align: center;
+        background: linear-gradient(90deg, #0ea5e9, #0284c7);
+        color: #fff !important;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 13.5px;
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease;
+        margin-top: auto;
+      }
+      .btn-pricing:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .p-card {
+          border-bottom: 1px solid var(--border);
+        }
+        .p-card:nth-child(2n) {
+          border-right: 0;
+        }
+        .p-card:nth-child(3),
+        .p-card:nth-child(4) {
+          border-bottom: 0;
+        }
+      }
+      @media (max-width: 600px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+        .p-card {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .p-card:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      /* FAQ */
+      .faq {
+        max-width: 840px;
+        margin: 0 auto;
+      }
+      details {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      summary {
+        cursor: pointer;
+        padding: 18px 22px;
+        font-weight: 800;
+        font-size: 14.5px;
+        color: var(--ink);
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary i {
+        color: var(--primary);
+        transition: transform 0.2s ease;
+        flex: 0 0 auto;
+      }
+      details[open] summary i {
+        transform: rotate(90deg);
+      }
+      details .a {
+        padding: 0 22px 20px 48px;
+        font-size: 13.5px;
+        color: var(--text2);
+      }
+      details .a b {
+        color: var(--text);
+      }
+
+      /* PROOF */
+      .proofgrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .proofgrid .stat {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .proofgrid .v {
+        font-size: 34px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: var(--primary);
+      }
+      .proofgrid .l {
+        font-size: 12.5px;
+        color: var(--text2);
+        font-weight: 600;
+        margin-top: 5px;
+      }
+
+      /* CTA */
+      .cta-final {
+        background: var(--navy);
+        color: #dbeafe;
+        text-align: center;
+        padding: 90px 0;
+      }
+      .cta-final h2 {
+        color: #fff;
+        font-size: 40px;
+      }
+      .cta-final p {
+        color: #93c5fd;
+        font-size: 17px;
+        max-width: 680px;
+        margin: 0 auto 32px;
+      }
+
+      footer {
+        background: var(--navy);
+        border-top: 1px solid var(--navy3);
+        padding: 36px 0;
+        color: #5d8ec2;
+        font-size: 12.5px;
+      }
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      footer a {
+        color: #7dd3fc;
+        text-decoration: none;
+        font-weight: 700;
+        margin-left: 18px;
+      }
+      footer a:hover {
+        color: #fff;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 760px) {
+        h1 {
+          font-size: 34px;
+        }
+        h2 {
+          font-size: 26px;
+        }
+        .navlinks a:not(.nav-cta) {
+          display: none;
+        }
+        .svg-panel {
+          padding: 14px;
+        }
+        .motion {
+          padding: 24px;
+        }
+        .cta-final h2 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= NAV ================= -->
+    <nav class="top">
+      <div class="wrap">
+        <a class="logo" href="#"
+          ><span class="mark"><i class="fa-solid fa-infinity"></i></span
+          >think4ever</a
+        >
+        <div class="navlinks">
+          <a href="#problem">Why</a>
+          <a href="#layers">6-Layer Concept</a>
+          <a href="#agents">Agent Workforce</a>
+          <a href="#reverse">Reverse Engineering</a>
+          <a href="#portability">Templates</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a class="nav-cta" href="#cta">Start free</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <header class="hero">
+      <div class="wrap">
+        <span class="eyebrow"
+          ><i class="fa-solid fa-diagram-project"></i> The Product Knowledge
+          Layer for the AI Agent Era</span
+        >
+        <h1>
+          Your AI can write any code.<br />It just doesn't know
+          <span class="hl">what you're building.</span>
+        </h1>
+        <p class="lead">
+          think4ever turns your product into a permanent, machine-readable
+          <b>6-Layer Concept</b> — flows, data models, API contracts, UI
+          designs, roles — that any agent can execute:
+          <b>Claude Code, Cursor, Codex via MCP</b>, or think4ever's
+          <b>own 12-agent workforce</b> that builds, browser-tests, secures, and
+          deploys it for you. Then keeps the spec true by reading your codebase
+          back.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#cta"
+            ><i class="fa-solid fa-rocket"></i> Start building free</a
+          >
+          <a class="btn btn-ghost" href="../login.html"
+            ><i class="fa-solid fa-hotel"></i> See the live proof — a real app
+            built from spec</a
+          >
+        </div>
+        <div class="statbar">
+          <div class="s">
+            <div class="v">6</div>
+            <div class="l">layers in one portable concept format</div>
+          </div>
+          <div class="s">
+            <div class="v">12</div>
+            <div class="l">specialized in-house AI agents</div>
+          </div>
+          <div class="s">
+            <div class="v">21</div>
+            <div class="l">UI screens built from one spec in one session</div>
+          </div>
+          <div class="s">
+            <div class="v">3+</div>
+            <div class="l">model vendors — Anthropic, OpenAI, Google</div>
+          </div>
+          <div class="s">
+            <div class="v">∞</div>
+            <div class="l">sessions — your spec never forgets</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= WORKS WITH ================= -->
+    <div class="workswith">
+      <div class="wrap">
+        <span class="lbl">Plays with your stack</span>
+        <span><i class="fa-solid fa-terminal"></i> Claude Code</span>
+        <span><i class="fa-solid fa-i-cursor"></i> Cursor</span>
+        <span><i class="fa-solid fa-cloud"></i> Codex</span>
+        <span><i class="fa-solid fa-plug"></i> MCP</span>
+        <span><i class="fa-brands fa-github"></i> GitHub import</span>
+        <span><i class="fa-brands fa-jira"></i> Jira Cloud</span>
+        <span><i class="fa-brands fa-microsoft"></i> Azure deploy</span>
+        <span
+          ><i class="fa-solid fa-database"></i> MySQL · Postgres · SQLite</span
+        >
+      </div>
+    </div>
+
+    <!-- ================= PROBLEM ================= -->
+    <section id="problem">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-triangle-exclamation"></i> The problem</span
+        >
+        <h2>
+          Coding agents are only as good as their context.<br />And today,
+          context dies with every chat.
+        </h2>
+        <p class="sub">
+          Teams adopted AI coding tools in months. Nobody built the layer that
+          tells those tools what the product actually is. The result:
+        </p>
+        <div class="cards">
+          <div class="card pain reveal">
+            <div class="icon"><i class="fa-solid fa-comments"></i></div>
+            <h3>Re-explaining, forever</h3>
+            <p>
+              Every session starts from zero. You burn tokens — and patience —
+              re-describing your own data model, your own design system, your
+              own rules. <b>Then the AI still guesses.</b>
+            </p>
+          </div>
+          <div class="card pain reveal">
+            <div class="icon"><i class="fa-solid fa-shuffle"></i></div>
+            <h3>Drift between tools &amp; teammates</h3>
+            <p>
+              One dev prompts in Cursor, another in Claude Code. Same product,
+              different descriptions — <b>different products shipped</b>.
+              Multiply by 50 squads.
+            </p>
+          </div>
+          <div class="card pain reveal">
+            <div class="icon"><i class="fa-solid fa-hourglass-end"></i></div>
+            <h3>Knowledge that evaporates</h3>
+            <p>
+              Requirements and decisions live in chat history and people's
+              heads. Sessions close. People leave.
+              <b>The product brain walks out the door.</b>
+            </p>
+          </div>
+          <div class="card pain reveal">
+            <div class="icon"><i class="fa-solid fa-map"></i></div>
+            <h3>Nobody knows the current state</h3>
+            <p>
+              For legacy systems, documentation describes intentions from years
+              ago. The only truth is code — <b>readable by engineers only</b>,
+              and by no one at decision level.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6 LAYER CONCEPT ================= -->
+    <section class="alt" id="layers">
+      <div class="wrap center">
+        <span class="kicker"
+          ><i class="fa-solid fa-layer-group"></i> The format</span
+        >
+        <h2>
+          The 6-Layer Concept: one portable definition of your entire product
+        </h2>
+        <p class="sub">
+          SQL canonized data. Git canonized history. Docker canonized packaging.
+          OpenAPI canonized interfaces. The 6-Layer Concept canonizes
+          <b>the product itself</b> — every layer structured, versioned, and
+          machine-readable, so agents parse it deterministically instead of
+          interpreting screenshots and PDFs.
+        </p>
+        <div class="layers">
+          <div class="layer reveal">
+            <span class="n">1</span>
+            <div>
+              <h4>Concept &amp; Design Contract</h4>
+              <p>
+                What the product is, for whom — plus the enforced style/UX law
+                every screen obeys
+              </p>
+            </div>
+            <span class="fmt">structured JSON</span>
+          </div>
+          <div class="layer reveal">
+            <span class="n">2</span>
+            <div>
+              <h4>User Flows &amp; Business Rules</h4>
+              <p>
+                Named, testable rules — rule_no_double_booking,
+                rule_room_clean_for_checkin
+              </p>
+            </div>
+            <span class="fmt">structured JSON</span>
+          </div>
+          <div class="layer reveal">
+            <span class="n">3</span>
+            <div>
+              <h4>Data Model / ERD</h4>
+              <p>
+                Entities, relationships, cardinalities — with sensitive fields
+                flagged &amp; excluded from APIs
+              </p>
+            </div>
+            <span class="fmt">structured JSON</span>
+          </div>
+          <div class="layer reveal">
+            <span class="n">4</span>
+            <div>
+              <h4>API Contracts</h4>
+              <p>
+                Endpoints with request/response examples and attached business
+                rules
+              </p>
+            </div>
+            <span class="fmt">structured JSON</span>
+          </div>
+          <div class="layer reveal">
+            <span class="n">5</span>
+            <div>
+              <h4>UI Designs &amp; Navigation</h4>
+              <p>
+                Full HTML/CSS/JS per screen, page order, navigation graph —
+                pixel-real, not wireframes
+              </p>
+            </div>
+            <span class="fmt">HTML/CSS/JS</span>
+          </div>
+          <div class="layer reveal">
+            <span class="n">6</span>
+            <div>
+              <h4>Roles &amp; Access</h4>
+              <p>
+                Every screen, flow and data object carries roleAccess — agents
+                generate permission-aware code from day one
+              </p>
+            </div>
+            <span class="fmt">structured JSON</span>
+          </div>
+        </div>
+        <p class="caption" style="margin-top: 24px">
+          <b>Versioned</b> with a built-in version control system ·
+          <b>auditable</b> via activity logs · <b>portable</b> — export/import
+          the entire structure between projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= TWO MOTIONS ================= -->
+    <section class="dark" id="motions">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-code-branch"></i> Two ways to build</span
+        >
+        <h2>Bring your agents. Or use ours. Or both.</h2>
+        <p class="sub">
+          think4ever is the only platform that both
+          <b>feeds external coding agents</b> a real spec and
+          <b>ships a complete in-house agent workforce</b> that takes a concept
+          to deployed software on its own.
+        </p>
+        <div class="motions">
+          <div class="motion reveal">
+            <h3>
+              <i class="fa-solid fa-plug-circle-bolt"></i> Motion 1 — Your
+              agents, via MCP
+            </h3>
+            <span class="tag"
+              >Claude Code · Cursor · Codex · any MCP agent</span
+            >
+            <p>
+              Connect the tools your team already pays for. They read the
+              6-Layer Concept over MCP and execute the spec instead of guessing
+              it.
+            </p>
+            <ul>
+              <li>
+                <i class="fa-solid fa-check"></i>Same spec served to every agent
+                — no drift between IDE, terminal, and CI lanes
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Vendor-independent: swap agents
+                without losing a single requirement
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Proven live: Claude Code
+                rebuilt 21 production-grade screens + extracted a full API spec
+                from one stored concept, in one session
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Agents write progress, issues
+                &amp; comments back into the project
+              </li>
+            </ul>
+          </div>
+          <div class="motion reveal">
+            <h3>
+              <i class="fa-solid fa-robot"></i> Motion 2 — The built-in agent
+              workforce
+            </h3>
+            <span class="tag"
+              >12 specialized agents · manager-orchestrated · multi-model</span
+            >
+            <p>
+              A Manager Agent decomposes complex work into up to 100 ordered
+              subtasks and routes them to specialists — developer, QA, security,
+              database, deployment and more.
+            </p>
+            <ul>
+              <li>
+                <i class="fa-solid fa-check"></i>QA agent runs
+                <b>real browser tests</b> (Playwright/Puppeteer), captures
+                screenshots, auto-files issues
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Deploy pipeline: build →
+                containerize → deploy to Azure → health check →
+                <b>AI auto-fix loop</b>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Multi-model under the hood:
+                Anthropic, OpenAI, Google — plus bring-your-own API keys
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>Per-step credit metering — you
+                see exactly what every agent step costs
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AGENT WORKFORCE ================= -->
+    <section id="agents">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-users-gear"></i> The workforce</span
+        >
+        <h2>12 specialized agents. One orchestrator. Zero hand-holding.</h2>
+        <p class="sub">
+          Not one generalist chatbot — a coordinated team where each agent does
+          one job at production depth.
+        </p>
+        <div class="agents">
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-chess-king"></i></div>
+            <h4>Manager</h4>
+            <p>
+              Analyzes complex tasks, plans up to 100 ordered subtasks, assigns
+              the right specialist to each
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-code"></i></div>
+            <h4>Developer</h4>
+            <p>
+              Implements features against the concept's contracts — the
+              heavyweight of the team
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-vial-circle-check"></i></div>
+            <h4>QA</h4>
+            <p>
+              Real Playwright/Puppeteer browser runs, screenshots as evidence,
+              auto-files up to 50 issues per run
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-list-check"></i></div>
+            <h4>Test Case</h4>
+            <p>
+              Derives test cases from flows and business rules — coverage tied
+              to the spec, not vibes
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>Security</h4>
+            <p>
+              Reviews code and configuration for vulnerabilities before they
+              ship
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-database"></i></div>
+            <h4>Database</h4>
+            <p>
+              Designs and manages schemas from the ERD layer; connects to live
+              MySQL/Postgres/SQLite
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-brands fa-docker"></i></div>
+            <h4>Container &amp; Deploy</h4>
+            <p>
+              AI-generated Dockerfiles, Azure pipeline, health checks — failures
+              trigger an AI fix-and-retry loop
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-terminal"></i></div>
+            <h4>Terminal</h4>
+            <p>Executes real shell work in controlled environments</p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-eye"></i></div>
+            <h4>Diffusion Vision</h4>
+            <p>
+              Reverse-engineers legacy codebases into full 6-Layer Concepts —
+              runs as a parallel background service
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-chart-line"></i></div>
+            <h4>Analytical</h4>
+            <p>Analyzes project data and produces decision-grade insights</p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-file-lines"></i></div>
+            <h4>Document</h4>
+            <p>
+              Generates specifications and documents — exports to real Word
+              files
+            </p>
+          </div>
+          <div class="agent reveal">
+            <div class="ai"><i class="fa-solid fa-person-chalkboard"></i></div>
+            <h4>Presentation</h4>
+            <p>
+              Turns concepts into stakeholder-ready decks — native PowerPoint
+              export
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px">
+          <div class="pipeline">
+            <div class="pstep">
+              <i class="fa-solid fa-lightbulb"></i>
+              <h5>Concept</h5>
+              <p>6 layers defined or imported</p>
+            </div>
+            <div class="pstep">
+              <i class="fa-solid fa-chess-king"></i>
+              <h5>Plan</h5>
+              <p>Manager decomposes &amp; assigns</p>
+            </div>
+            <div class="pstep">
+              <i class="fa-solid fa-code"></i>
+              <h5>Build</h5>
+              <p>Developer + Database agents</p>
+            </div>
+            <div class="pstep">
+              <i class="fa-solid fa-vial-circle-check"></i>
+              <h5>Test</h5>
+              <p>QA in real browsers, screenshots</p>
+            </div>
+            <div class="pstep">
+              <i class="fa-solid fa-shield-halved"></i>
+              <h5>Secure</h5>
+              <p>Security review gate</p>
+            </div>
+            <div class="pstep">
+              <i class="fa-brands fa-docker"></i>
+              <h5>Deploy</h5>
+              <p>Containerize → Azure → health check</p>
+            </div>
+            <div class="pstep fix">
+              <i class="fa-solid fa-rotate"></i>
+              <h5>Auto-fix</h5>
+              <p>Failures loop back to AI repair</p>
+            </div>
+          </div>
+          <p class="caption">
+            The full delivery pipeline — orchestrated inside think4ever,
+            traceable back to the spec at every step.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REVERSE ENGINEERING ================= -->
+    <section class="alt" id="reverse">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-magnifying-glass-chart"></i> Brownfield
+          superpower</span
+        >
+        <h2>
+          Point it at any codebase. Watch your real system appear, documented.
+        </h2>
+        <p class="sub">
+          The Diffusion Vision service reverse-engineers legacy code into a
+          complete 6-Layer Concept — concepts, flows, data models, screens.
+          Continuously. So the spec never rots, and the system everyone forgot
+          becomes visible to everyone.
+        </p>
+        <div class="svg-panel reveal">
+          <svg
+            width="1040"
+            height="280"
+            viewBox="0 0 1040 280"
+            font-family="Inter,system-ui,sans-serif"
+            role="img"
+            aria-label="Reverse engineering flow from legacy code to living concept"
+          >
+            <defs>
+              <marker
+                id="ra"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="7"
+                markerHeight="7"
+                orient="auto-start-reverse"
+              >
+                <path d="M0,0 L10,5 L0,10 z" fill="#0ea5e9" />
+              </marker>
+              <marker
+                id="rg"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="7"
+                markerHeight="7"
+                orient="auto-start-reverse"
+              >
+                <path d="M0,0 L10,5 L0,10 z" fill="#22c55e" />
+              </marker>
+            </defs>
+            <g font-size="12.5" font-weight="800" fill="#0c4a6e">
+              <rect
+                x="30"
+                y="70"
+                width="190"
+                height="120"
+                rx="13"
+                fill="#fff"
+                stroke="#bae6fd"
+                stroke-width="2"
+              />
+              <text x="125" y="103" text-anchor="middle">Any codebase</text>
+              <text
+                x="125"
+                y="125"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                GitHub import · ZIP upload
+              </text>
+              <text
+                x="125"
+                y="142"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                10-year-old monolith welcome
+              </text>
+              <text
+                x="125"
+                y="159"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                zero documentation required
+              </text>
+
+              <rect
+                x="290"
+                y="55"
+                width="230"
+                height="150"
+                rx="13"
+                fill="#fffbeb"
+                stroke="#f59e0b"
+                stroke-width="2"
+              />
+              <text x="405" y="88" text-anchor="middle" fill="#92400e">
+                Diffusion Vision Agents
+              </text>
+              <text
+                x="405"
+                y="112"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#b45309"
+              >
+                background service
+              </text>
+              <text
+                x="405"
+                y="129"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#b45309"
+              >
+                multi-project, parallel
+              </text>
+              <text
+                x="405"
+                y="146"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#b45309"
+              >
+                reads code, infers flows,
+              </text>
+              <text
+                x="405"
+                y="163"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#b45309"
+              >
+                entities, screens &amp; rules
+              </text>
+              <text
+                x="405"
+                y="187"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="700"
+                fill="#92400e"
+              >
+                optional on-prem sync node
+              </text>
+
+              <rect
+                x="590"
+                y="55"
+                width="220"
+                height="150"
+                rx="13"
+                fill="#f0f9ff"
+                stroke="#0ea5e9"
+                stroke-width="2.5"
+              />
+              <text x="700" y="88" text-anchor="middle">
+                Living 6-Layer Concept
+              </text>
+              <text
+                x="700"
+                y="112"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                current state, not intentions
+              </text>
+              <text
+                x="700"
+                y="129"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                readable by executives,
+              </text>
+              <text
+                x="700"
+                y="146"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                auditors &amp; new hires
+              </text>
+              <text
+                x="700"
+                y="170"
+                text-anchor="middle"
+                font-size="10.5"
+                font-weight="700"
+                fill="#0284c7"
+              >
+                version-controlled
+              </text>
+
+              <rect
+                x="870"
+                y="35"
+                width="150"
+                height="80"
+                rx="12"
+                fill="#fff"
+                stroke="#bae6fd"
+                stroke-width="2"
+              />
+              <text x="945" y="68" text-anchor="middle" font-size="11.5">
+                Modernize
+              </text>
+              <text
+                x="945"
+                y="88"
+                text-anchor="middle"
+                font-size="10"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                agents rebuild from spec
+              </text>
+
+              <rect
+                x="870"
+                y="145"
+                width="150"
+                height="80"
+                rx="12"
+                fill="#fff"
+                stroke="#bae6fd"
+                stroke-width="2"
+              />
+              <text x="945" y="178" text-anchor="middle" font-size="11.5">
+                Govern
+              </text>
+              <text
+                x="945"
+                y="198"
+                text-anchor="middle"
+                font-size="10"
+                font-weight="500"
+                fill="#0369a1"
+              >
+                audit, Jira, knowledge base
+              </text>
+            </g>
+            <line
+              x1="220"
+              y1="130"
+              x2="285"
+              y2="130"
+              stroke="#0ea5e9"
+              stroke-width="2.5"
+              marker-end="url(#ra)"
+            />
+            <line
+              x1="520"
+              y1="130"
+              x2="585"
+              y2="130"
+              stroke="#0ea5e9"
+              stroke-width="2.5"
+              marker-end="url(#ra)"
+            />
+            <line
+              x1="810"
+              y1="105"
+              x2="865"
+              y2="80"
+              stroke="#0ea5e9"
+              stroke-width="2"
+              marker-end="url(#ra)"
+            />
+            <line
+              x1="810"
+              y1="155"
+              x2="865"
+              y2="180"
+              stroke="#0ea5e9"
+              stroke-width="2"
+              marker-end="url(#ra)"
+            />
+            <path
+              d="M 700 205 Q 700 255 405 255 Q 125 255 125 195"
+              stroke="#22c55e"
+              stroke-width="2.5"
+              stroke-dasharray="7 5"
+              fill="none"
+              marker-end="url(#rg)"
+            />
+            <text
+              x="412"
+              y="247"
+              text-anchor="middle"
+              font-size="11"
+              font-weight="800"
+              fill="#15803d"
+            >
+              continuous sync — spec and code never drift apart
+            </text>
+          </svg>
+        </div>
+        <div class="cards" style="margin-top: 26px">
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-server"></i></div>
+            <h3>On-prem sync node</h3>
+            <p>
+              A deployable child node — own identity, own encryption, own
+              database — runs the analysis <b>inside your infrastructure</b>.
+              Code never has to leave the building. Built for regulated
+              industries.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3>M&amp;A &amp; takeover due diligence</h3>
+            <p>
+              Scan an acquisition target's repo or an inherited client codebase.
+              Know what you're actually buying — <b>before</b> you sign, not six
+              months after.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-user-graduate"></i></div>
+            <h3>Onboarding in hours</h3>
+            <p>
+              New engineers — and new AI agents — read the discovered concept
+              instead of spelunking code. Attrition stops deleting institutional
+              memory.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PORTABILITY / TEMPLATES ================= -->
+    <section id="portability">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-box-open"></i> Portability</span
+        >
+        <h2>Specs you can export, import, clone — and start from</h2>
+        <p class="sub">
+          The entire 6-layer structure moves between projects with one export.
+          And you don't start from a blank page: a built-in, AI-curated template
+          library ships full starter concepts across industries — with category
+          trees, tags, and popularity ranking.
+        </p>
+        <div class="cards">
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-right-left"></i></div>
+            <h3>Full structure export / import</h3>
+            <p>
+              Concept, flows, rules, ERD, API contracts, UI designs, roles — one
+              package, moved between projects, business units, or companies.
+              <b>Like a Docker image for product knowledge.</b>
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-store"></i></div>
+            <h3>Template library, built in</h3>
+            <p>
+              Hundreds of production-depth starter concepts organized by
+              category and tags, each refined through multiple AI enhancement
+              passes, ranked by popularity. Pick one, customize, build.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-people-arrows"></i></div>
+            <h3>The agency multiplier</h3>
+            <p>
+              Deliver a hotel system once → export the blueprint → every future
+              hospitality client starts at 80%. Your delivery experience becomes
+              a <b>reusable, billable asset</b>.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-door-open"></i></div>
+            <h3>No-hostage guarantee</h3>
+            <p>
+              Because everything exports, adopting think4ever is low-risk by
+              design. Formats win <b>because</b> users can leave — that's how
+              standards are made.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ENTERPRISE ================= -->
+    <section class="alt" id="enterprise">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-building-shield"></i> Enterprise-grade</span
+        >
+        <h2>Governance that was built in, not bolted on</h2>
+        <p class="sub">
+          Everything an AI-governance review asks for — already in the platform.
+        </p>
+        <div class="cards">
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-code-branch"></i></div>
+            <h3>Concept version control</h3>
+            <p>
+              A real version control system for product definitions — see how
+              the spec evolved, who changed what, and roll back.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-users-rectangle"></i></div>
+            <h3>Groups, roles &amp; permissions</h3>
+            <p>
+              Platform-level RBAC: user groups, per-project permissions, and
+              roleAccess down to individual screens, flows, and data objects.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h3>Full activity &amp; audit logs</h3>
+            <p>
+              Every action recorded. "Which requirement produced this code?" has
+              an answer your auditors can read — before the audit, not after.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-brands fa-jira"></i></div>
+            <h3>Jira Cloud integration</h3>
+            <p>
+              Issues and tasks bridge into the workflow your organization
+              already runs. No rip-and-replace.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Knowledge base with collaboration</h3>
+            <p>
+              Team knowledge pages with collaboration and feedback loops —
+              product knowledge and tribal knowledge finally in one governed
+              place.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-key"></i></div>
+            <h3>Your models, your keys</h3>
+            <p>
+              Bring-your-own API keys across Anthropic, OpenAI, and Google.
+              Per-step credit metering shows exactly what every agent action
+              costs.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-eye-slash"></i></div>
+            <h3>Sensitive-data awareness</h3>
+            <p>
+              ERD fields flagged sensitive (ID documents, birth dates) are
+              excluded from generated APIs. Privacy lives in the model, not in a
+              wiki.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-server"></i></div>
+            <h3>On-prem analysis node</h3>
+            <p>
+              The sync-child node runs codebase analysis inside your perimeter
+              with its own identity and encryption. Your code stays home.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+            <h3>Board-ready outputs</h3>
+            <p>
+              Concepts export to native PowerPoint and Word; the presentation
+              and video agents turn specs into stakeholder communication
+              automatically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXTRAS / DELIGHT ================= -->
+    <section>
+      <div class="wrap center">
+        <span class="kicker"
+          ><i class="fa-solid fa-wand-magic-sparkles"></i> And the parts that
+          feel like magic</span
+        >
+        <h2>Talk to it. Diagram it. Present it.</h2>
+        <div class="cards" style="margin-top: 36px">
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-microphone-lines"></i></div>
+            <h3>Voice interface</h3>
+            <p>
+              Realtime voice sessions — describe your product out loud, refine
+              the concept in conversation. The spec types itself.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Prompt-to-diagram</h3>
+            <p>
+              Architecture, ERD, sequence, deployment diagrams generated from
+              plain language — and stored as structured, editable models, never
+              dead pictures.
+            </p>
+          </div>
+          <div class="card reveal">
+            <div class="icon"><i class="fa-solid fa-image"></i></div>
+            <h3>Vision &amp; image generation</h3>
+            <p>
+              Diffusion-powered visuals for concepts and presentations — the
+              whole content pipeline stays inside the platform.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROOF ================= -->
+    <section class="alt">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-flask"></i> Live proof, not promises</span
+        >
+        <h2>This website sits next to the receipt</h2>
+        <p class="sub">
+          The SkyStay Hotel Management System in this workspace was built by
+          Claude Code reading a think4ever concept over MCP — one session, zero
+          guessed data models. Click through it yourself.
+        </p>
+        <div class="proofgrid">
+          <div class="stat reveal">
+            <div class="v">21</div>
+            <div class="l">
+              UI screens rebuilt locally — pixel-faithful, fully navigable
+            </div>
+          </div>
+          <div class="stat reveal">
+            <div class="v">23</div>
+            <div class="l">
+              database entities with relationships — extracted, not invented
+            </div>
+          </div>
+          <div class="stat reveal">
+            <div class="v">18+</div>
+            <div class="l">
+              API groups with endpoints, JSON examples &amp; named business
+              rules
+            </div>
+          </div>
+          <div class="stat reveal">
+            <div class="v">0</div>
+            <div class="l">
+              data models, endpoints or design rules the AI had to guess
+            </div>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top: 34px; margin-bottom: 0">
+          <a class="btn btn-primary" href="../login.html"
+            ><i class="fa-solid fa-hotel"></i> Open the demo app</a
+          >
+          <a
+            class="btn btn-ghost"
+            style="color: var(--text2); border-color: var(--border)"
+            href="../info.html"
+            ><i class="fa-solid fa-book"></i> Read the full story</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMPARISON ================= -->
+    <section>
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-table-cells-large"></i> Honest comparison</span
+        >
+        <h2>What each layer of your stack actually solves</h2>
+        <p class="sub">
+          think4ever doesn't replace your coding agents — it's the layer they're
+          missing. They answer "how do I write this code?"; think4ever answers
+          "what should this system be — and is it still true?"
+        </p>
+        <table class="compare reveal">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Claude Code</th>
+              <th>Cursor</th>
+              <th>Codex</th>
+              <th>think4ever</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Writing &amp; refactoring code</td>
+              <td class="yes">Excellent</td>
+              <td class="yes">Excellent</td>
+              <td class="yes">Excellent</td>
+              <td class="yes">Own developer agent + orchestrates all three</td>
+            </tr>
+            <tr>
+              <td>Persistent product concept, flows &amp; rules</td>
+              <td class="no">Chat-bound</td>
+              <td class="no">Chat-bound</td>
+              <td class="no">Chat-bound</td>
+              <td class="yes">6-Layer Concept, versioned</td>
+            </tr>
+            <tr>
+              <td>Machine-readable ERD / API contracts</td>
+              <td class="no">Invents them</td>
+              <td class="no">Invents them</td>
+              <td class="no">Invents them</td>
+              <td class="yes">Stored as JSON, agent-parseable</td>
+            </tr>
+            <tr>
+              <td>UI design system as enforced contract</td>
+              <td class="part">Prompt discipline</td>
+              <td class="part">Prompt discipline</td>
+              <td class="part">Prompt discipline</td>
+              <td class="yes">
+                Global design instructions, per-screen designs
+              </td>
+            </tr>
+            <tr>
+              <td>Reverse-engineer legacy code into specs</td>
+              <td class="part">One-off, in-chat</td>
+              <td class="part">One-off, in-chat</td>
+              <td class="part">One-off, in-chat</td>
+              <td class="yes">Continuous background service + on-prem node</td>
+            </tr>
+            <tr>
+              <td>Browser-level QA with evidence</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="part">CI checks</td>
+              <td class="yes">
+                Playwright/Puppeteer runs, screenshots, auto-filed issues
+              </td>
+            </tr>
+            <tr>
+              <td>Deploy with AI auto-fix loop</td>
+              <td class="part">Scripted</td>
+              <td class="no">—</td>
+              <td class="part">CI-dependent</td>
+              <td class="yes">
+                Azure pipeline: build → deploy → health check → auto-repair
+              </td>
+            </tr>
+            <tr>
+              <td>Export/import whole product structure</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">Full blueprint portability + template library</td>
+            </tr>
+            <tr>
+              <td>Cross-tool, cross-team continuity</td>
+              <td class="no">Per-user memory</td>
+              <td class="no">Per-machine</td>
+              <td class="no">Per-run</td>
+              <td class="yes">
+                One spec via MCP for every agent &amp; teammate
+              </td>
+            </tr>
+            <tr>
+              <td>Governance: RBAC, audit, Jira, version control</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="no">—</td>
+              <td class="yes">Built in</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section class="pricing-section" id="pricing">
+      <div class="wrap center" style="position: relative; z-index: 2">
+        <span class="kicker"><i class="fa-solid fa-tag"></i> Pricing</span>
+        <h2>
+          Build something real.<br /><span class="hl">Start Free.</span> Scale
+          as you go.
+        </h2>
+        <p class="sub">
+          Every account starts with free credits — enough to complete a real
+          project, not just a tutorial. No card required to begin.
+        </p>
+
+        <div class="pricing-grid reveal">
+          <div class="p-card">
+            <span class="tier">THINK FREE</span>
+            <h3>Free</h3>
+            <div class="price">Free</div>
+            <p class="desc">
+              Build, extend, or modernize something real before spending a
+              penny.
+            </p>
+            <ul>
+              <li>
+                <i class="fa-solid fa-check"></i> Included 500 Orchestration
+                Credits
+              </li>
+              <li><i class="fa-solid fa-check"></i> 1 Project</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Build New, Extend Current,
+                Modernize Legacy
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> BYOK (bring your own model)
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Upgrade upon exceeding the
+                free usage limits
+              </li>
+            </ul>
+            <a href="#cta" class="btn-pricing">Start Free</a>
+          </div>
+
+          <div class="p-card">
+            <span class="tier">THINK NEW</span>
+            <h3>Think New</h3>
+            <div class="price">$25.00/month</div>
+            <p class="desc">
+              For solo developers, freelancers and startup founders
+            </p>
+            <ul>
+              <li>
+                <i class="fa-solid fa-check"></i> Included 2000 Orchestration
+                Credits/Month
+              </li>
+              <li><i class="fa-solid fa-check"></i> Create up to 3 Projects</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Build New, Extend Current,
+                Modernize Legacy
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> BYOK (bring your own model)
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Add credits as needed ($0.05
+                per credit)
+              </li>
+            </ul>
+            <a href="#" class="btn-pricing">Get Early Access</a>
+          </div>
+
+          <div class="p-card">
+            <span class="tier">THINK BIG</span>
+            <h3>Team</h3>
+            <div class="price">$250.00/month</div>
+            <p class="desc">
+              For developer teams and multi-developer environments shipping
+              together at speed.
+            </p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Support up to 5 Users</li>
+              <li><i class="fa-solid fa-check"></i> Create up to 5 Projects</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Shared Project
+                Environments
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Pool Usage across the Team
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Utilize Admin Controls + Caps
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Priority System
+                Orchestration
+              </li>
+            </ul>
+            <a href="../enterprise.html" class="btn-pricing">Contact Sales</a>
+          </div>
+
+          <div class="p-card">
+            <span class="tier">THINK BLUE</span>
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+            <p class="desc">
+              For organisations with sophisticated environments, larger scale,
+              and tailored deployment models.
+            </p>
+            <ul>
+              <li>
+                <i class="fa-solid fa-check"></i> Scale to Enterprise Teams
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Private Deployment
+                Options
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Custom Usage Pools +
+                Cost Controls
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Stage Gates +
+                Confidence Scoring
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Access Dedicated Support +
+                Onboarding
+              </li>
+            </ul>
+            <a href="../enterprise.html" class="btn-pricing">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="alt" id="faq">
+      <div class="wrap">
+        <span class="kicker"
+          ><i class="fa-solid fa-circle-question"></i> FAQ</span
+        >
+        <h2>The questions skeptics ask first</h2>
+        <div class="faq" style="margin-top: 34px">
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>Isn't this just
+              documentation? Docs always go stale.
+            </summary>
+            <div class="a">
+              That's exactly the failure mode we engineered out. The
+              <b>Diffusion Vision service continuously reads your codebase</b>
+              and syncs concepts &amp; flows back, so the spec describes the
+              running system — not last year's intentions. A spec that's cheaper
+              to keep true than to abandon behaves nothing like documentation.
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>We already use Claude
+              Code / Cursor. Why add a layer?
+            </summary>
+            <div class="a">
+              Keep them — that's the point. They're excellent executors with
+              <b>no durable product brain</b>: every session starts from zero
+              and every developer describes the product differently. think4ever
+              serves all of them the same machine-readable spec over MCP. Your
+              agents get better the day you connect them.
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>What if we want to leave?
+            </summary>
+            <div class="a">
+              Export the entire structure — all six layers — and take it with
+              you. <b>The no-hostage design is deliberate</b>: formats become
+              standards because users can leave, which is precisely why they
+              don't.
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>Our code can't leave our
+              infrastructure.
+            </summary>
+            <div class="a">
+              It doesn't have to. The <b>on-prem sync node</b> (own identity,
+              own encryption, own database) runs codebase analysis inside your
+              perimeter and syncs only the derived concept structure. Built with
+              regulated industries in mind.
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>Which AI models does it
+              depend on?
+            </summary>
+            <div class="a">
+              None exclusively. The platform runs
+              <b>Anthropic, OpenAI, and Google models</b>, supports
+              bring-your-own API keys, and meters credits per agent step. Model
+              churn is a config change, not a migration.
+            </div>
+          </details>
+          <details class="reveal">
+            <summary>
+              <i class="fa-solid fa-chevron-right"></i>How do we start without a
+              big process change?
+            </summary>
+            <div class="a">
+              Three doors, all small: <b>(1)</b> pick a starter template from
+              the library and customize it; <b>(2)</b> import an existing GitHub
+              repo or ZIP and let analysis agents map your current state;
+              <b>(3)</b> connect your existing coding agent via MCP to one
+              project. Value lands before any workflow changes.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="cta-final" id="cta">
+      <div class="wrap">
+        <h2>Stop re-explaining your product to your AI.</h2>
+        <p>
+          Spec once — in six layers. Build everywhere — with your agents or
+          ours. Stay true — with continuous code-to-spec sync. The product brain
+          your AI era is missing.
+        </p>
+        <div class="btn-row" style="margin-bottom: 0">
+          <a class="btn btn-primary" href="#"
+            ><i class="fa-solid fa-rocket"></i> Start free — one project, full
+            MCP access</a
+          >
+          <a class="btn btn-ghost" href="../enterprise.html"
+            ><i class="fa-solid fa-building-shield"></i> Enterprise pitch
+            deck</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span
+          >think4ever — the product knowledge layer for the AI agent era</span
+        >
+        <span>
+          <a href="../info.html">How it works</a>
+          <a href="../enterprise.html">Enterprise</a>
+          <a href="../marketing.html">GTM plan</a>
+          <a href="../become_standard.html">Standard thesis</a>
+          <a href="../login.html">Live demo</a>
+        </span>
+      </div>
+    </footer>
+
+    <script>
+      // scroll-reveal
+      (function () {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
+  </body>
+</html>
