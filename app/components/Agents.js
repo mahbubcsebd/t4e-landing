@@ -60,38 +60,38 @@ export default function Agents() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="mt-16 max-w-[1400px] mx-auto"
           >
-            <div className="flex items-stretch gap-0 overflow-x-auto py-[6px] scrollbar-hide">
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 p-[20px_16px] text-center relative rounded-l-3xl shadow-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:flex xl:flex-row items-stretch gap-4 xl:gap-0 py-[6px]">
+              <div className="flex-1 bg-white border border-zinc-200/60 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none xl:rounded-l-3xl shadow-sm">
                 <Lightbulb className="w-6 h-6 text-zinc-800 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Concept</h5>
                 <p className="m-0 text-[11px] text-zinc-500">6 layers defined or imported</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 border-l-0 p-[20px_16px] text-center relative shadow-sm">
+              <div className="flex-1 bg-white border border-zinc-200/60 xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none shadow-sm">
                 <Crown className="w-6 h-6 text-amber-600 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Plan</h5>
                 <p className="m-0 text-[11px] text-zinc-500">Manager decomposes & assigns</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 border-l-0 p-[20px_16px] text-center relative shadow-sm">
+              <div className="flex-1 bg-white border border-zinc-200/60 xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none shadow-sm">
                 <Code className="w-6 h-6 text-blue-600 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Build</h5>
                 <p className="m-0 text-[11px] text-zinc-500">Developer + Database agents</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 border-l-0 p-[20px_16px] text-center relative shadow-sm">
+              <div className="flex-1 bg-white border border-zinc-200/60 xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none shadow-sm">
                 <FlaskConical className="w-6 h-6 text-emerald-600 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Test</h5>
                 <p className="m-0 text-[11px] text-zinc-500">QA in real browsers, screenshots</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 border-l-0 p-[20px_16px] text-center relative shadow-sm">
+              <div className="flex-1 bg-white border border-zinc-200/60 xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none shadow-sm">
                 <ShieldHalf className="w-6 h-6 text-red-600 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Secure</h5>
                 <p className="m-0 text-[11px] text-zinc-500">Security review gate</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-white border border-zinc-200/60 border-l-0 p-[20px_16px] text-center relative shadow-sm">
+              <div className="flex-1 bg-white border border-zinc-200/60 xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none shadow-sm">
                 <Container className="w-6 h-6 text-sky-600 mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Deploy</h5>
                 <p className="m-0 text-[11px] text-zinc-500">Containerize → Azure → check</p>
               </div>
-              <div className="flex-1 min-w-[150px] bg-[#fffbeb] border border-[#fde68a] border-l-0 p-[20px_16px] text-center relative rounded-r-3xl shadow-sm">
+              <div className="flex-1 bg-[#fffbeb] border border-[#fde68a] xl:border-l-0 p-[20px_16px] text-center relative rounded-2xl xl:rounded-none xl:rounded-r-3xl shadow-sm">
                 <RotateCw className="w-6 h-6 text-[#d97706] mb-3 mx-auto" />
                 <h5 className="m-0 mb-[6px] text-[13px] font-bold text-[#09090D]">Auto-fix</h5>
                 <p className="m-0 text-[11px] text-[#b45309]">Failures loop back to AI repair</p>

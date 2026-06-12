@@ -239,13 +239,13 @@
 
   @keyframes colorCycle {
     0% { filter: hue-rotate(0deg); }
-    33% { filter: hue-rotate(50deg); }
-    66% { filter: hue-rotate(-40deg); }
+    33% { filter: hue-rotate(75deg); }
+    66% { filter: hue-rotate(-50deg); }
     100% { filter: hue-rotate(0deg); }
   }
 
   .animate-gradient-bg {
-    background: radial-gradient(125% 125% at 50% 10%, #fff 40%, #6366f1 100%);
+    background: radial-gradient(125% 125% at 50% 10%, #ffffff 35%, #38bdf8 100%);
     animation: colorCycle 20s infinite linear;
   }
 }

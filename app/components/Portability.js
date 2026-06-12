@@ -41,16 +41,16 @@ export default function Portability() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
           >
             {cards.map((card, idx) => {
               const Icon = card.icon;
               return (
                 <div
                   key={idx}
-                  className="group flex flex-col bg-[#f8fafc]/50 rounded-3xl border border-zinc-200/60 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] p-8"
+                  className="group flex flex-col bg-gradient-to-br from-[#07A7E1]/[0.05] to-[#093cad]/[0.05] backdrop-blur-md rounded-3xl border border-zinc-200/60 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 p-8"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#07A7E1]/10 to-[#093cad]/10 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <div className="w-12 h-12 rounded-2xl bg-[#07A7E1]/10 flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <Icon className="w-6 h-6 text-[#07A7E1]" />
                   </div>
                   <h3 className="text-[18px] md:text-[20px] font-bold text-[#09090D] mb-3 leading-tight">
