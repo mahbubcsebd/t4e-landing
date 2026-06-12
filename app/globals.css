@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,12 +47,20 @@
 }
 
 @keyframes accordion-down {
-  from { height: 0; }
-  to { height: var(--radix-accordion-content-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
 }
 @keyframes accordion-up {
-  from { height: var(--radix-accordion-content-height); }
-  to { height: 0; }
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 .dark {
@@ -153,7 +160,12 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      sans-serif;
     color: var(--color-brand-text);
     line-height: 1.6;
     font-size: 15px;
@@ -167,12 +179,14 @@
   .wrap {
     @apply max-w-[1180px] mx-auto px-[28px];
   }
-  
+
   /* Reveal Animations */
   .reveal {
     opacity: 0;
     transform: translateY(18px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
   }
   .reveal.in {
     opacity: 1;
@@ -181,20 +195,22 @@
 
   /* Gradient text: black at bottom → blue at top */
   .text-gradient {
-    background: linear-gradient(180deg, #07A7E1 0%, #093cad 100%);
+    background: linear-gradient(180deg, #07a7e1 0%, #093cad 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .btn-gradient {
-    background: linear-gradient(135deg, #07A7E1 0%, #093cad 100%);
+    background: linear-gradient(135deg, #07a7e1 0%, #093cad 100%);
   }
 
   .btn-gradient-outline {
     position: relative;
     border: 1.5px solid transparent;
-    background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #07A7E1 0%, #093cad 100%) border-box;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, #07a7e1 0%, #093cad 100%) border-box;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
   }
@@ -203,7 +219,7 @@
     content: '';
     position: absolute;
     inset: -1.5px;
-    background: linear-gradient(135deg, #07A7E1 0%, #093cad 100%);
+    background: linear-gradient(135deg, #07a7e1 0%, #093cad 100%);
     border-radius: 9999px;
     opacity: 0;
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -215,7 +231,7 @@
   }
 
   .btn-gradient-outline .btn-text {
-    background: linear-gradient(135deg, #07A7E1 0%, #093cad 100%);
+    background: linear-gradient(135deg, #07a7e1 0%, #093cad 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -238,14 +254,34 @@
   }
 
   @keyframes colorCycle {
-    0% { filter: hue-rotate(0deg); }
-    33% { filter: hue-rotate(75deg); }
-    66% { filter: hue-rotate(-50deg); }
-    100% { filter: hue-rotate(0deg); }
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    33% {
+      filter: hue-rotate(75deg);
+    }
+    66% {
+      filter: hue-rotate(-50deg);
+    }
+    100% {
+      filter: hue-rotate(0deg);
+    }
   }
 
   .animate-gradient-bg {
-    background: radial-gradient(125% 125% at 50% 10%, #ffffff 35%, #38bdf8 100%);
+    background: radial-gradient(
+      125% 125% at 50% 10%,
+      #ffffff 35%,
+      #38bdf8 100%
+    );
     animation: colorCycle 20s infinite linear;
+  }
+
+  .fixed-gradient-bg {
+    background: radial-gradient(
+      125% 125% at 50% 10%,
+      #ffffff 35%,
+      #07a7e1 100%
+    );
   }
 }

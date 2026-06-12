@@ -10,7 +10,7 @@ export default function Pricing() {
   const plans = [
     {
       label: 'Think Free',
-      name: 'Free',
+      name: 'Think Free',
       price: 'Free',
       subText: '',
       subTextColor: 'text-green-500 text-[10px]',
